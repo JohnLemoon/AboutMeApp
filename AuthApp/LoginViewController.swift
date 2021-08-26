@@ -15,16 +15,30 @@ class LoginViewController: UIViewController {
     @IBOutlet var buttonForgotPass: UIButton!
     @IBOutlet var buttonForgotLogin: UIButton!
 
-    var login = "niko"
-    var password = "12345678"
+    private var login = "alex"
+    private var password = "12345678"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         buttonLogin.layer.cornerRadius = 3
 
         buttonForgotPass.layer.cornerRadius = 3
         buttonForgotLogin.layer.cornerRadius = 3
+
+        loginInput.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        passwordInput.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+
+        loginInput.attributedPlaceholder = NSAttributedString(
+            string: "Login",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+
+        passwordInput.attributedPlaceholder = NSAttributedString(
+            string: "Password",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         }
+
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let WelcomeVC = segue.destination as? WelcomeViewController
@@ -32,11 +46,12 @@ class LoginViewController: UIViewController {
 
         WelcomeVC.welcomeText = "Welcome \(login)"
     }
+
     
     @IBAction func buttonSendAuth() {
-        loginInput.text != login && passwordInput.text != password
-            ? wrongAuthAlert()
-            : wrongAuthAlert()
+        if loginInput.text != login || passwordInput.text != password {
+            wrongAuthAlert()
+        }
     }
 
     @IBAction func buttonSendForgotLogin() {
@@ -56,7 +71,7 @@ class LoginViewController: UIViewController {
     @IBAction func buttonSendForgotPassword() {
         let alert = UIAlertController(
             title: "Your Password",
-            message: "Password: \(password)" ,
+            message: "Password: \(password)",
             preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(
@@ -68,8 +83,6 @@ class LoginViewController: UIViewController {
     }
 
     func wrongAuthAlert(){
-        if loginInput.text != login &&
-            passwordInput.text != password {
             let alert = UIAlertController(
                 title: "Wrong!",
                 message: "Wrong Login or Password!",
@@ -83,7 +96,14 @@ class LoginViewController: UIViewController {
             self.present(alert, animated: true)
 
             passwordInput.text = ""
-        }
-
     }
+
+
+
+    func unwind(for unwindSegue: UIStoryboardSegue) {
+        loginInput.text = ""
+        passwordInput.text = ""
+    }
+    
 }
+
