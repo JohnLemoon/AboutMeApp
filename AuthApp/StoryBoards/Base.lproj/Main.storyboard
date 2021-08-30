@@ -21,6 +21,9 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="eD4-gu-fnq"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDo-3F-UhX">
                                 <rect key="frame" x="217" y="285.5" width="111" height="26"/>
@@ -41,6 +44,9 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="FOo-Od-AiF"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0S-gI-wj7">
                                 <rect key="frame" x="47" y="285.5" width="111" height="26"/>
@@ -65,7 +71,7 @@
                                 </state>
                                 <connections>
                                     <action selector="buttonSendAuth" destination="BYZ-38-t0r" eventType="touchUpInside" id="LAK-kU-ae8"/>
-                                    <segue destination="Vsg-nv-E8B" kind="presentation" id="fTe-4M-Itm"/>
+                                    <segue destination="x98-ko-hTh" kind="presentation" identifier="WelcomeVC" id="fTe-4M-Itm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -104,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="940.57971014492762" y="77.445652173913047"/>
         </scene>
-        <!--Welcome View Controller-->
+        <!--Home-->
         <scene sceneID="Odt-rh-tQ6">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="Vsg-nv-E8B" customClass="WelcomeViewController" customModule="AuthApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -126,6 +132,7 @@
                                 </state>
                                 <connections>
                                     <action selector="logoutButtonClick" destination="Vsg-nv-E8B" eventType="touchUpInside" id="5kh-ls-Lik"/>
+                                    <segue destination="hHq-UO-Xwq" kind="unwind" unwindAction="unwindSegueFor:" id="NJw-N4-aHb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -140,18 +147,96 @@
                             <constraint firstItem="KGq-9p-Wcp" firstAttribute="top" secondItem="bNF-Sd-GMg" secondAttribute="top" constant="389" id="kLu-0I-7cX"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="homekit" catalog="system" id="gRg-eE-sra">
+                        <color key="badgeColor" red="0.53173237669999995" green="0.39496276390000001" blue="0.8067587464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="MF6-Pf-HER"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="logoutButton" destination="KGq-9p-Wcp" id="dvG-67-a6N"/>
                         <outlet property="welcomeLabel" destination="RkV-li-igl" id="Fct-Gg-ywv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7e-1W-lKf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="hHq-UO-Xwq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1778" y="77"/>
+            <point key="canvasLocation" x="2716" y="76.911544227886068"/>
+        </scene>
+        <!--Options-->
+        <scene sceneID="grM-f8-dEr">
+            <objects>
+                <viewController id="KGg-Hw-Fbd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fRy-fo-H4x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Dpd-7c-got"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Options" image="pencil.slash" catalog="system" id="VPx-H1-E3Y"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yvg-mu-VZD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3678" y="77"/>
+        </scene>
+        <!--Help-->
+        <scene sceneID="CgO-kD-JD3">
+            <objects>
+                <viewController id="MZd-s6-yey" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nkJ-b7-VRd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dNy-xH-gnh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Help" image="info.circle.fill" catalog="system" id="e8c-3b-qfD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pkz-1m-pMu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2716" y="847"/>
+        </scene>
+        <!--About me-->
+        <scene sceneID="qVX-WE-SHe">
+            <objects>
+                <viewController id="0JF-QZ-tqx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kFF-4R-NK3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="7nv-98-bKt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="About me" image="person.fill" catalog="system" id="lKr-KH-BcM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O2o-JD-IHt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2716" y="-648"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="HKw-TS-Aom">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="x98-ko-hTh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ySA-J6-hCM">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Vsg-nv-E8B" kind="relationship" relationship="viewControllers" id="gJg-cL-sM1"/>
+                        <segue destination="0JF-QZ-tqx" kind="relationship" relationship="viewControllers" id="XmE-aJ-bee"/>
+                        <segue destination="MZd-s6-yey" kind="relationship" relationship="viewControllers" id="jew-21-0pk"/>
+                        <segue destination="KGg-Hw-Fbd" kind="relationship" relationship="viewControllers" id="14K-bl-UQd"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0of-Wu-p4S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1776.8" y="76.911544227886068"/>
         </scene>
     </scenes>
     <resources>
+        <image name="homekit" catalog="system" width="128" height="106"/>
+        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="pencil.slash" catalog="system" width="128" height="113"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

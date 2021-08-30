@@ -20,13 +20,12 @@ class WelcomeViewController: UIViewController {
 
         logoutButton.layer.cornerRadius = 3
 
-        welcomeLabel.text = welcomeText
-
+        welcomeLabel.text = "Welcome \(welcomeText)"
         
     }
     
     @IBAction func logoutButtonClick() {
         dismiss(animated: true)
-
+        
     }
 }

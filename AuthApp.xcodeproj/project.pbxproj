@@ -39,6 +39,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85393E2E26DC58BC00C1365B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				85AC1B0626D5AEAF002F6D69 /* LoginViewController.swift */,
+				85AC1B1626D5AEFB002F6D69 /* WelcomeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		85393E2F26DC58D700C1365B /* PersonalityAuth */ = {
+			isa = PBXGroup;
+			children = (
+				85AC1B0226D5AEAF002F6D69 /* AppDelegate.swift */,
+				85AC1B0426D5AEAF002F6D69 /* SceneDelegate.swift */,
+				85AC1B1026D5AEAF002F6D69 /* Info.plist */,
+			);
+			path = PersonalityAuth;
+			sourceTree = "<group>";
+		};
+		85393E3026DC58ED00C1365B /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				85AC1B0826D5AEAF002F6D69 /* Main.storyboard */,
+				85AC1B0D26D5AEAF002F6D69 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		85393E3126DC590F00C1365B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				85AC1B0B26D5AEAF002F6D69 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		85AC1AF626D5AEAE002F6D69 = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +94,10 @@
 		85AC1B0126D5AEAF002F6D69 /* AuthApp */ = {
 			isa = PBXGroup;
 			children = (
-				85AC1B0226D5AEAF002F6D69 /* AppDelegate.swift */,
-				85AC1B0426D5AEAF002F6D69 /* SceneDelegate.swift */,
-				85AC1B0626D5AEAF002F6D69 /* LoginViewController.swift */,
-				85AC1B0826D5AEAF002F6D69 /* Main.storyboard */,
-				85AC1B1626D5AEFB002F6D69 /* WelcomeViewController.swift */,
-				85AC1B0B26D5AEAF002F6D69 /* Assets.xcassets */,
-				85AC1B0D26D5AEAF002F6D69 /* LaunchScreen.storyboard */,
-				85AC1B1026D5AEAF002F6D69 /* Info.plist */,
+				85393E2F26DC58D700C1365B /* PersonalityAuth */,
+				85393E2E26DC58BC00C1365B /* ViewControllers */,
+				85393E3026DC58ED00C1365B /* StoryBoards */,
+				85393E3126DC590F00C1365B /* Resources */,
 			);
 			path = AuthApp;
 			sourceTree = "<group>";
@@ -292,7 +324,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7YCM44Z76L;
-				INFOPLIST_FILE = AuthApp/Info.plist;
+				INFOPLIST_FILE = AuthApp/PersonalityAuth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,7 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7YCM44Z76L;
-				INFOPLIST_FILE = AuthApp/Info.plist;
+				INFOPLIST_FILE = AuthApp/PersonalityAuth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -20,7 +20,6 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         buttonLogin.layer.cornerRadius = 3
 
@@ -44,10 +43,29 @@ class LoginViewController: UIViewController {
         guard let WelcomeVC = segue.destination as? WelcomeViewController
         else { return }
 
-        WelcomeVC.welcomeText = "Welcome \(login)"
+        WelcomeVC.welcomeText = login
     }
 
-    
+    func alert(title: String, message: String) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert)
+
+
+        alert.addAction(UIAlertAction(
+            title: "OK",
+            style: .default
+        ))
+
+        self.present(alert, animated: true)
+    }
+
+    func wrongAuthAlert() {
+        alert(title: "Wrong", message: "Wrong Login or Password")
+        passwordInput.text = ""
+    }
+
     @IBAction func buttonSendAuth() {
         if loginInput.text != login || passwordInput.text != password {
             wrongAuthAlert()
@@ -55,55 +73,33 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func buttonSendForgotLogin() {
-        let alert = UIAlertController(
-            title: "Your Login!",
-            message: "Login: \(login)",
-            preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction(
-            title: "OK",
-            style: .default,
-            handler: nil))
-
-        self.present(alert, animated: true)
+        alert(title: "Your Login!", message: "Login: \(login)")
     }
 
     @IBAction func buttonSendForgotPassword() {
-        let alert = UIAlertController(
-            title: "Your Password",
-            message: "Password: \(password)",
-            preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction(
-            title: "OK",
-            style: .default,
-            handler: nil))
-
-        self.present(alert, animated: true)
+        alert(title: "Your Password", message: "Password: \(password)")
     }
 
-    func wrongAuthAlert(){
-            let alert = UIAlertController(
-                title: "Wrong!",
-                message: "Wrong Login or Password!",
-                preferredStyle: .alert)
-
-            alert.addAction(UIAlertAction(
-                title: "OK",
-                style: .default,
-                handler: nil))
-
-            self.present(alert, animated: true)
-
-            passwordInput.text = ""
-    }
-
-
-
-    func unwind(for unwindSegue: UIStoryboardSegue) {
+    @IBAction func unwindSegue(for unwindSegue: UIStoryboardSegue) {
         loginInput.text = ""
         passwordInput.text = ""
     }
-    
+
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            super.touchesBegan(touches, with: event)
+            view.endEditing(true)
+        }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == loginInput {
+            passwordInput.becomeFirstResponder()
+        } else {
+            performSegue(withIdentifier: "WelcomeVC" , sender: nil)
+        }
+        return true
+    }
 }
 
